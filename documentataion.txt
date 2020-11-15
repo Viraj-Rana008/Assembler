@@ -1,0 +1,91 @@
+Assumptions:
+	Comments:
+	1. Comment only occur at the end of a line, nowwhere else
+	2. Comment is done by (//....) i.e
+		//agdsydg is a comment
+	3. You can have a line with comment only i.e a full line comment
+	4. You cannot have a multi-line comment
+
+	General:
+	1. Your assembler code can have empty lines
+	2. Every command and variable and everything has to be in capital case
+	3. In case of CLA and STP the operand is assumed to be 0(8 bit)
+
+	Start:
+	1. Every program must start with the START command
+	2. If no address is specified after the start it is assumed to be 0
+	3. The value of start address is in decimal and cannot <=8 bits in binary space
+
+	Literal:
+	1. In case you have to use a literal, you it like =12 etc.
+		i.e, = sign followed by the number
+	2. There has to be +ve int after = sign
+	3. LiteralTable format = [ValueOfLiteral LineNo(of literal)]
+	
+	Label:
+	1. The format of the label table is [LabelName LineNo(of Label)]
+
+	Opcode:
+	1. The format of the opcode table is 
+		[opcode LineNo binaryCode operand]
+		
+		# opcode is the assembly code of the command
+		# LineNo is the no of line in which code appears
+		# binaryCode is the binary code corresponding to the opcode
+		# operand is the corresponding (if opcode is CLA or STP then "--")
+
+	Variables:
+	1. Variable name has to start with a alphabet
+	2. Variable name can only be alphanumeric
+	3. Format of variable Table [Name FirstApperance InitialValue(same as DataTable) ]
+	3. This table also contains label and their value
+
+	DataTable:
+	1. This table contains .Data part separately
+	2. Format = [VariableName Value(random)]
+
+	Machine1 && Machine2:
+	1. Both table contains the translated machine code
+	2. 1 shows data value in decimal and 2 shows data value in binary
+
+Error:
+	File:
+	1. If the file is empty --> Error
+
+	Start:
+	1. If start keyword is wrongly spelled --> Error
+	2. If the code does not start with the start --> Error
+	3. If the address specified after the START is not +ve number --> Error
+	4. If more than 2 arguments are provided with the START command --> Error
+
+	General:
+	1. If there are 2 or arguments in any command --> Error
+
+	Opcode:
+	1. If the opcode is misspelled --> Error
+
+	Literal:
+	1. If the number is float --> Error
+	2. If only '=' is specified with no value --> Error
+	3. If there is any special character in literal --> Error
+
+	Variable:
+	1. If variable name starts with digit (0-9) --> Error
+	2. If variable is not aplhanumeric --> Error
+
+How to run the file:
+	Note: Make sure functions.py and errors.py are also in the same folder
+	1. Save the txt file that you want to convert in the same folder as code
+	2. Run the assempler.py file
+	3. Enter the file name which you want to convert with txt extension
+
+Output:
+	1. First you will see the input file without comment or empty lines
+	2. Then you will have the start loading address
+	3. Then you will see label, opcode literal, variable table in same order as here
+	4. Then you will see the .Data part of the program in a separate table
+	Note: If there is an error while forming a table, then that table and every following output will not be displayed.
+	Note2: The ouput will be displaye in the console itself.
+	5. After data table, there are 2 outputs. machine1 shows shows corresponding binary output with decimal in data part and machine2 shows same output with binary values in data part.
+
+Note: In order to generate a error, then make changes in the input file according to the error generating part.

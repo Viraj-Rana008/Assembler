@@ -1,0 +1,20 @@
+START 64
+INP MA
+INP MB
+CLA	//shiadhdba
+
+//hdasihdoa
+//dikashdb
+
+SAC R1
+LAC MB
+L2 BRP L1
+SUB =2 //subddbdakb
+SAC MB
+LAC R1
+ADD MA
+SAC R1
+LAC MB
+BRN L2
+L1 DSP R1
+STP
